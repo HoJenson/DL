@@ -56,3 +56,7 @@ net = nn.Sequential(b1, b2, b3, b4, b5,
                     nn.AdaptiveAvgPool2d((1,1)),
                     nn.Flatten(), nn.Linear(512, 10))
 
+X = torch.rand(size=(1,1,224,224))
+for layer in net:
+    X = layer(X)
+    print(layer.__class__.__name__, 'output shape:\t', X.shape)
